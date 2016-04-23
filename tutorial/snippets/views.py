@@ -6,7 +6,7 @@ from snippets.serializers import SnippetSerializer
 
 
 @api_view(['GET', 'POST'])
-def snippet_list(request):
+def snippet_list(request, format=None):
     """List all snippets, or create a new snippet."""
     if request.method == 'GET':
         snippets = Snippet.objects.all()
@@ -22,7 +22,7 @@ def snippet_list(request):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def snippet_detail(request, pk):
+def snippet_detail(request, pk, format=None):
     """Retrieve, update or delete a snippet instance."""
     try:
         snippet = Snippet.objects.get(pk=pk)
