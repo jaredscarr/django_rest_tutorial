@@ -28,7 +28,7 @@ class Snippet(models.Model):
 
         ordering = ('created',)
 
-    def save(self, *arg, **kwargs):
+    def save(self, *args, **kwargs):
         """Use the pgyments library to create a highlighted HTML snippet."""
         lexer = get_lexer_by_name(self.language)
         lineos = self.lineos and 'table' or False
