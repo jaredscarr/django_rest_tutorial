@@ -31,9 +31,9 @@ class Snippet(models.Model):
     def save(self, *args, **kwargs):
         """Use the pgyments library to create a highlighted HTML snippet."""
         lexer = get_lexer_by_name(self.language)
-        lineos = self.lineos and 'table' or False
+        linenos = self.linenos and 'table' or False
         options = self.title and {'title': self.title} or {}
-        formatter = HtmlFormatter(style=self.style, lineos=lineos,
+        formatter = HtmlFormatter(style=self.style, linenos=linenos,
                                   full=True, **options)
         self.highlighted = highlight(self.code, lexer, formatter)
         super(Snippet, self).save(*args, **kwargs)
